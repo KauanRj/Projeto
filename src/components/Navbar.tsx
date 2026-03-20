@@ -35,13 +35,13 @@ useEffect(() => {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setActive((entry.target as HTMLElement).id);
+          setActive(entry.target.id);
         }
       });
     },
     {
       root: null,
-      rootMargin: "-40% 0px -40% 0px",
+      rootMargin: "-30% 0px -60% 0px",
       threshold: 0,
     }
   );
@@ -57,6 +57,16 @@ useEffect(() => {
   };
 }, []);
 
+useEffect(() => {
+  const handleScroll = () => {
+    if (window.scrollY < 100) {
+      setActive("");
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
   // scroll suave
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);

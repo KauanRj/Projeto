@@ -1,6 +1,17 @@
 import { motion } from "framer-motion";
 
 export default function Hero() {
+
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop - 80,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center text-center px-6 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
 
@@ -35,11 +46,19 @@ export default function Hero() {
           transition={{ delay: 0.4 }}
           className="flex justify-center gap-4 flex-wrap"
         >
-          <button className="bg-blue-500 px-6 py-3 rounded-xl hover:scale-105 hover:bg-blue-600 transition shadow-lg shadow-blue-500/20">
+          {/* BOTÃO DEMO */}
+          <button
+            onClick={() => scrollToSection("demo")}
+            className="bg-blue-500 px-6 py-3 rounded-xl hover:scale-105 hover:bg-blue-600 transition shadow-lg shadow-blue-500/20"
+          >
             Ver demonstração
           </button>
 
-          <button className="border border-gray-600 px-6 py-3 rounded-xl hover:bg-gray-800 transition">
+          {/* BOTÃO SOBRE */}
+          <button
+            onClick={() => scrollToSection("sobre")}
+            className="border border-gray-600 px-6 py-3 rounded-xl hover:bg-gray-800 transition"
+          >
             Entender projeto
           </button>
         </motion.div>
